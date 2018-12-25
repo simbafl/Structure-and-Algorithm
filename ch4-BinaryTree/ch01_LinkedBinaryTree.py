@@ -109,4 +109,48 @@ class LinkedBinaryTree(BinaryTree):
             count += 1
         return count
 
+    def _add_root(self, e):
+        if self._root is not None: raise ValueError('root exists')
+        self._size = 1
+        self._root = self._Node(e)
+        return self._make_position(self._root)
 
+    def _add_left(self, p, e):
+        node = self._validate(p)
+        if node._left is not None: raise ValueError('left child exists')
+        self._size += 1
+        node._left = self._Node(e, node)
+        return self._make_position(node._left)
+
+    def _add_right(self, p, e):
+        node = self._validate(p)
+        if node._right is not None: raise ValueError('right child exists')
+        self._size += 1
+        node.right = self._Node(e, node)
+        return self._make_position(node._right)
+
+    def _replace(self, p, e):
+        node = self._validate(p)
+        old = node._element
+        node._element = e
+        retrun old
+
+    def _delete(self, p):
+        node = self._validate(p)
+        if self.num_children(p) == 2:raise ValueError('p has two cildren')
+        child = node._left if node._left else node._right
+        if child is not None:
+            child._parent = node._parent
+        if node is self._root:
+            self._root = child
+        else:
+            parent = node._parent
+            if node is parent._left:
+                parent._left = child
+            else:
+                parent._right = child
+        self._size -= 1
+        node.parent = node
+        return node._element
+
+    

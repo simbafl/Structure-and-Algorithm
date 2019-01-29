@@ -11,5 +11,5 @@
 - [<font size=+1>图</font>](./ch8-Graph)
 
 
-- [<font size=+1>python常用小技巧</font>](./python小技巧.md)
-- [<font size=+1>Leetcode刷题</font>](./Leetcode)
+[<font size=+1>python常用小技巧</font>](./python小技巧.md)  
+[<font size=+1>Leetcode刷题</font>](./Leetcode)

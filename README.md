@@ -6,7 +6,7 @@
 - [<font size=+1>链表</font>](./ch3-LinkedList)
 - [<font size=+1>二叉树</font>](./ch4-BinaryTree)
 - [<font size=+1>排序</font>](./ch5-Sort)
-- [<font size=+1>哈希</font>](./ch6-Hash)(有待更新)
+- [<font size=+1>哈希表</font>](./ch6-Hash)
 - [<font size=+1>队列</font>](./ch7-Queue)
 - [<font size=+1>图</font>](./ch8-Graph)(有待更新)
 

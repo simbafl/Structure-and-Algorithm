@@ -12,7 +12,7 @@ class AVLTreeMap():
 
         def left_height(self):
             return self._left._height if self._left is not None else 0
-        
+
         def right_height(self):
             return self._right._height if self._right is not None else 0
  

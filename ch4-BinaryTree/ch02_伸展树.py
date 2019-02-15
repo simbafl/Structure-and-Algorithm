@@ -1,9 +1,12 @@
 """
     伸展树
 """
+
+
 class SplayTreeMap():
     def _rotate(self, p):
         pass
+
     def _splay(self, p):
         while p != self.root():
             parent = self.parent(p)

@@ -1,18 +1,23 @@
 """
     AVL树
 """
+
+
 class AVLTreeMap():
     class _Node():
         __sloats__ = '_height, _left, _right, _parent, _element'
+
         def __init__(self, element, parent=None, left=None, right=None):
             self._height = 0
+
         def left_height(self):
             return self._left._height if self._left is not None else 0
+        
         def right_height(self):
             return self._right._height if self._right is not None else 0
  
     def _relink(self, parent, child, make_left_child):
-		"""正确关联父亲和孩子节点"""
+        """正确关联父亲和孩子节点"""
         if make_left_child:
             parent._left = child   # 使child成为左节点，child允许为None
         else:
@@ -21,7 +26,7 @@ class AVLTreeMap():
             child._parent = parent   # 如果child存在，指向父节点(定义双指针)
  
     def _rotate(self, p):
-		"""旋转节点和原来的祖父母节点进行关联"""
+        """旋转节点和原来的祖父母节点进行关联"""
         a = p._node
         b = a._parent
         c = b._parent
@@ -38,7 +43,7 @@ class AVLTreeMap():
             self._relink(a, b, True)
  
     def _restructure(self, x):
-		"""判断需要旋转一次还是两次"""
+        """判断需要旋转一次还是两次"""
         y = self.parent(x)
         z = self.parent(y)
         if (x == self.right(y)) == (y == self.right(z)):  # 此时三个节点在一条直线上，旋转一次, 使y成为root节点
@@ -50,11 +55,11 @@ class AVLTreeMap():
             return x
  
     def _recompute_height(self, p):
-		"""计算树的高度"""
+        """计算树的高度"""
         p._node._height = 1 + max(p._node.left_height(), p._node.right_height())
  
     def _isbalanced(self, p):
-		"""判断树是否平衡"""
+        """判断树是否平衡"""
         return abs(p._node.left_height() - p._node.right_height()) <= 1
  
     def _tall_child(self, p, favorleft=False):
@@ -69,7 +74,7 @@ class AVLTreeMap():
         return self._tall_child(child, alignment)
  
     def _rebalance(self, p):
-		"""恢复树的平衡"""
+        """恢复树的平衡"""
         while p is not None:
             old_height = p._node._height
             if not self._rebalance(p):
@@ -83,10 +88,9 @@ class AVLTreeMap():
                 p = self.parent(p)
  
     def _reblance_insert(self, p):
-		"""插入操作后重新使树平衡"""
+        """插入操作后重新使树平衡"""
         self._rebalance(p)
  
     def _reblance_delete(self, p):
-		"""删除操作后重新使树平衡"""
+        """删除操作后重新使树平衡"""
         self._rebalance(p)
-

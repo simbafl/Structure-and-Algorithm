@@ -3,25 +3,34 @@ class Tree(object):
     class Position:
         def element(self):
             raise NotImplementedError('must be implemented by subclass')
+
         def __eq__(self, other):
             raise NotImplementedError('must be implemented by subclass')
+
         def __ne__(self, other):
             return not (self == other)
 
     def root(self):
         raise NotImplementedError('must be implemented by subclass')
+
     def num_children(self):
         raise NotImplementedError('must be implemented by subclass')
+
     def children(self, p):
         raise NotImplementedError('must be implemented by subclass')
+
     def __len__(self):
         raise NotImplementedError('must be implemented by subclass')
+
     def is_root(self, p):
         return self.root() == p
+
     def is_leaf(self, p):
         return self.num_children(p) == 0
+
     def is_empty(self):
         return len(self) == 0
+
     def __iter__(self):
         for p in self.positions():
             yield p.element()
@@ -76,6 +85,7 @@ class Tree(object):
             for other in self._subtree_inorder(self.right()):
                 yield other
 
+
 class BinaryTree(Tree):
     """二叉树"""
     def left(self, p):
@@ -117,7 +127,7 @@ class LinkedBinaryTree(BinaryTree):
         def element(self):
             return self._node._element
         def __eq__(self, other):
-            return type(other) is type(self) and other_node is self._node
+            return type(other) is type(self) and other._node is self._node
 
     def _validate(self, p):
         """check position p is validate"""
@@ -130,7 +140,7 @@ class LinkedBinaryTree(BinaryTree):
         return p._node
 
     def _make_position(self, node):
-    """rerurn the position instance for given node, for None if no node"""
+        """rerurn the position instance for given node, for None if no node"""
         return self.Position(self.node) if node is not None else None
    
 #-------------- 公开访问方法 ---------------
@@ -193,7 +203,7 @@ class LinkedBinaryTree(BinaryTree):
         node = self._validate(p)
         old = node._element
         node._element = e
-        retrun old
+        return old
 
     def _delete(self, p):
         """

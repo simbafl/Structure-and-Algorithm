@@ -1,11 +1,14 @@
 """
 有效的括号，用栈思想解决
 """
+
+
 def isValid(s):
     """
     type s: str
     rtype: bool
     """
+    import collections
     stack = collections.deque()
     for i in s:
         if i in ["{", "(", "["]:
@@ -21,6 +24,4 @@ def isValid(s):
                 return False
             if tmp == "[" and i != "]":
                 return False
-            else:
-                pass
-     return len(stack) == 0  # 栈为空则匹配完
+    return len(stack) == 0  # 栈为空则匹配完

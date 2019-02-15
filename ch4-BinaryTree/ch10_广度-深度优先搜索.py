@@ -1,5 +1,6 @@
 """以scrapy爬虫框架举例，默认为深度优先搜索"""
 
+
 def depth_tree(root):
     """深度优先搜索，基于递归"""
     if root is not None:

@@ -74,7 +74,7 @@ print(s1, s2, s3)
 import collections
 lst = [1,1,3,2,4,2,1]
 collections.Counter(lst)  # Counter({1:3, 2:2, 3:1})
-collections.Counter(lst)  # [(1, 3), (2, 2), (3, 1)]
+[(k, v) for k,v in l.items()]  # [(1, 3), (2, 2), (3, 1)]
 ```
 ```py
 8. python自带堆heapq，默认min heapq
@@ -107,7 +107,7 @@ while True:
 10. 位运算判断奇偶
 # 判断奇偶除了用除法，还可以用二进制位运算
 # 偶数在二进制里面，最后一位是0，奇数是1
-if num % 1 == 0:
+if num & 1 == 0:
     print('偶')
 else:
     print('奇')
